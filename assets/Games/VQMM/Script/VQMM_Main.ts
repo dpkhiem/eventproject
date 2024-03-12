@@ -1,9 +1,10 @@
 import BaseScene from "../../../Script/Core/BaseScene";
 import VQMM_Socket from "./Network/VQMM_Socket";
-import WheelComponent from "./Components/WheelComponent";
+import VQMM_Wheel from "./Components/VQMM_Wheel";
 import { GameSettings } from '../Data/VQMM_Settings'
 import { CustomerData, PlayerData } from "./Virtual/VQMM_VirtualData";
 import { ICustomerData, IPlayerData } from "./Virtual/VQMM_IVirtualData";
+
 
 const {ccclass, property} = cc._decorator;
 
@@ -16,8 +17,8 @@ export default class VQMM_Main extends BaseScene {
     public lblUserPhone: cc.Label = null;
     @property(cc.Label)
     public lblUserID: cc.Label = null;
-    @property(WheelComponent)
-    public wheel: WheelComponent = null;
+    @property(VQMM_Wheel)
+    public wheel: VQMM_Wheel = null;
     // @property(cc.Asset)
     // gameSettings: cc.Asset = null;
     @property(cc.ScrollView)
@@ -50,7 +51,7 @@ export default class VQMM_Main extends BaseScene {
     }
 
     spinWheel(){
-        const virtualResults = Math.floor(Math.random() * (GameSettings.segmentCount - 1));
+        const virtualResults = Math.floor(Math.random() * (GameSettings.segment - 1));
         this.wheel.spin(virtualResults);
     }
 }
